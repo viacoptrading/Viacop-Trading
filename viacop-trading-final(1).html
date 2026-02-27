@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VIACOP TRADING</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500&family=Playfair+Display:ital,wght@0,700;1,400&family=IBM+Plex+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --red:#7B1010;--red2:#9B1515;--red3:#C0392B;
+  --bdr:rgba(255,255,255,.09);--bdr2:rgba(255,255,255,.05);
+  --grn:#34D399;--neg:#F87171;
+  --mono:'IBM Plex Mono',monospace;
+  --sans:'IBM Plex Sans',sans-serif;
+  --serif:'Playfair Display',Georgia,serif;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html,body{width:100%;height:100%;overflow:hidden;background:#050505;color:#f5f5f5;font-family:var(--sans)}
+
+/* APP: nav68 | clocks34 | ticker24 | main1fr | footer52 */
+#app{display:grid;grid-template-rows:68px 34px 24px 1fr 52px;height:100vh;width:100vw;position:relative}
+#app>*{position:relative;z-index:1}
+
+/* BG */
+#bg{position:fixed;inset:0;z-index:0}
+#bg img{width:100%;height:100%;object-fit:cover;object-position:center 35%}
+#bg::after{content:'';position:absolute;inset:0;background:linear-gradient(105deg,rgba(0,0,0,.88) 0%,rgba(0,0,0,.62) 45%,rgba(0,0,0,.72) 100%)}
+
+/* NAV */
+#nav{display:flex;align-items:center;justify-content:space-between;padding:0 36px;background:rgba(0,0,0,.28);border-bottom:1px solid var(--bdr);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+.logo{display:flex;align-items:center;gap:14px;text-decoration:none}
+.logo svg{width:34px;height:34px;flex-shrink:0}
+.logo-name{font-family:var(--mono);font-size:20px;font-weight:500;letter-spacing:7px;color:#fff;line-height:1}
+.logo-sub{font-family:var(--mono);font-size:7.5px;letter-spacing:5px;color:rgba(255,255,255,.32);text-transform:uppercase;margin-top:3px}
+.nav-r{display:flex;align-items:center;gap:22px}
+.nav-r a{font-family:var(--mono);font-size:8px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.42);text-decoration:none;transition:color .2s}
+.nav-r a:hover{color:#fff}
+.btn-cta{padding:7px 20px;border:1px solid rgba(255,255,255,.28);color:#fff!important;transition:background .2s,border-color .2s!important}
+.btn-cta:hover{background:var(--red)!important;border-color:var(--red)!important}
+.live-badge{display:flex;align-items:center;gap:5px;font-family:var(--mono);font-size:7px;letter-spacing:2px;color:rgba(255,255,255,.28)}
+.dot{width:5px;height:5px;border-radius:50%;background:var(--red3);animation:blink 2s infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.1}}
+
+/* WORLD CLOCKS */
+#worldclock{display:flex;align-items:center;padding:0 36px;background:rgba(0,0,0,.75);border-bottom:1px solid var(--bdr);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);overflow:hidden}
+.wc-item{display:flex;align-items:center;gap:9px;padding:0 18px 0 0;margin-right:18px;border-right:1px solid rgba(255,255,255,.07);height:34px;flex-shrink:0}
+.wc-item:last-child{border-right:none}
+.wc-city{font-family:var(--mono);font-size:7.5px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.30);min-width:50px}
+.wc-time{font-family:var(--mono);font-size:13px;font-weight:500;color:#fff;letter-spacing:1px;min-width:58px}
+.wc-tz{font-family:var(--mono);font-size:7px;color:var(--red3);letter-spacing:1px;opacity:.7}
+
+/* TICKER */
+#ticker{overflow:hidden;display:flex;align-items:center;background:rgba(0,0,0,.52);border-bottom:1px solid var(--bdr);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px)}
+.tt{display:flex;white-space:nowrap;animation:slide 65s linear infinite}
+.tt:hover{animation-play-state:paused}
+@keyframes slide{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.ti{display:inline-flex;align-items:center;gap:7px;padding:0 16px;height:24px;font-family:var(--mono);font-size:9px;border-right:1px solid var(--bdr);flex-shrink:0}
+.tl{color:rgba(255,255,255,.26)}.tv{color:#fff;font-weight:500}.tc{font-size:8px}
+.up{color:var(--grn)}.dn{color:var(--neg)}
+
+/* MAIN */
+#main{display:grid;grid-template-columns:1fr 318px;overflow:hidden}
+
+/* HERO */
+#hero{display:flex;flex-direction:column;justify-content:center;padding:0 68px 0 56px}
+.hero-eyebrow{font-family:var(--mono);font-size:8px;letter-spacing:6px;text-transform:uppercase;color:var(--red3);margin-bottom:22px;opacity:.85;display:flex;align-items:center;gap:14px}
+.hero-eyebrow::before{content:'';width:28px;height:1px;background:var(--red3)}
+.hero-h{font-family:var(--serif);font-size:clamp(46px,5.8vw,78px);font-weight:700;line-height:1.05;color:#fff;letter-spacing:-.5px;margin-bottom:8px}
+.hero-h em{display:block;font-style:italic;font-weight:400;color:rgba(255,255,255,.48);font-size:.68em;margin-top:6px;transition:opacity 1.4s ease,max-height 1.4s ease,margin-top 1.4s ease;max-height:80px;overflow:hidden;opacity:1}
+.hero-h em.gone{opacity:0;max-height:0;margin-top:0}
+.hero-sub{font-size:14px;font-weight:300;line-height:1.8;color:rgba(255,255,255,.52);max-width:490px;margin:22px 0 38px}
+.hero-btns{display:flex;align-items:center;gap:14px}
+.btn-primary{padding:13px 34px;background:var(--red);border:1px solid var(--red);color:#fff;font-family:var(--mono);font-size:9px;font-weight:500;letter-spacing:4px;text-transform:uppercase;text-decoration:none;transition:background .25s}
+.btn-primary:hover{background:var(--red2)}
+.btn-ghost{padding:13px 34px;border:1px solid rgba(255,255,255,.22);color:rgba(255,255,255,.6);font-family:var(--mono);font-size:9px;letter-spacing:4px;text-transform:uppercase;text-decoration:none;transition:all .25s}
+.btn-ghost:hover{border-color:#fff;color:#fff}
+.product-tags{display:flex;align-items:center;gap:10px;margin-top:34px}
+.ptag{padding:5px 13px;border:1px solid rgba(255,255,255,.1);font-family:var(--mono);font-size:7.5px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.32);transition:all .2s;cursor:default}
+.ptag:hover{border-color:rgba(255,255,255,.28);color:rgba(255,255,255,.65)}
+
+/* RIGHT */
+#right{display:flex;flex-direction:column;overflow:hidden;background:rgba(0,0,0,.65);border-left:1px solid var(--bdr);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
+.ph{display:flex;align-items:center;justify-content:space-between;padding:7px 14px;border-bottom:1px solid var(--bdr);flex-shrink:0}
+.ph-t{font-family:var(--mono);font-size:7px;font-weight:500;letter-spacing:3px;text-transform:uppercase;color:var(--red3);opacity:.9}
+.ph-r{font-family:var(--mono);font-size:7px;color:rgba(255,255,255,.2);letter-spacing:1px}
+#news-feed{flex:1;overflow-y:auto;min-height:0}
+#news-feed::-webkit-scrollbar{width:2px}
+#news-feed::-webkit-scrollbar-thumb{background:rgba(255,255,255,.07)}
+.ni{display:block;text-decoration:none;padding:13px 14px;border-bottom:1px solid var(--bdr2);transition:background .15s}
+.ni:hover{background:rgba(255,255,255,.04)}
+.ni-src{font-family:var(--mono);font-size:7px;letter-spacing:2px;text-transform:uppercase;color:var(--red3);margin-bottom:4px;opacity:.75}
+.ni-date{font-family:var(--mono);font-size:8px;color:rgba(255,255,255,.22);margin-bottom:4px}
+.ni-t{font-size:13px;font-weight:400;line-height:1.5;color:rgba(255,255,255,.82);display:-webkit-box;-webkit-line-clamp:5;-webkit-box-orient:vertical;overflow:hidden}
+.loading{padding:20px 14px;text-align:center;font-family:var(--mono);font-size:9px;color:rgba(255,255,255,.18)}
+.sp{display:inline-block;width:8px;height:8px;border:1px solid rgba(255,255,255,.1);border-top-color:var(--red3);border-radius:50%;animation:rot .7s linear infinite}
+@keyframes rot{to{transform:rotate(360deg)}}
+#fx-panel{flex-shrink:0;border-top:1px solid var(--bdr)}
+.fx-row{display:flex;align-items:center;justify-content:space-between;padding:6px 14px;border-bottom:1px solid var(--bdr2);font-family:var(--mono);transition:background .15s}
+.fx-row:last-child{border-bottom:none}
+.fx-row:hover{background:rgba(255,255,255,.04)}
+.fx-p{font-size:9px;color:rgba(255,255,255,.48)}
+.fx-rhs{display:flex;align-items:center;gap:8px}
+.fx-v{font-size:9px;color:#fff;font-weight:500}
+.fx-c{font-size:8px}
+
+/* FOOTER */
+#footer{display:flex;align-items:center;justify-content:space-between;padding:0 36px;background:var(--red);border-top:2px solid var(--red2);position:relative;overflow:hidden;z-index:2}
+#footer::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(-55deg,transparent,transparent 18px,rgba(0,0,0,.07) 18px,rgba(0,0,0,.07) 36px);pointer-events:none}
+.ft{position:relative;z-index:1}
+.ft-brand{font-family:var(--mono);font-size:14px;font-weight:500;letter-spacing:6px;color:#fff}
+.ft-est{font-family:var(--mono);font-size:7px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.35);margin-top:2px}
+.ft-addr{font-family:var(--mono);font-size:12px;color:rgba(255,255,255,.85);text-align:center;line-height:1.6;letter-spacing:1px;font-weight:500}
+.ft-right{text-align:right}
+.ft-right a{display:block;font-family:var(--mono);font-size:9px;color:rgba(255,255,255,.75);text-decoration:none;line-height:1.8;transition:color .2s}
+.ft-right a:hover{color:#fff}
+#clock{font-family:var(--mono);font-size:8px;color:rgba(255,255,255,.3);display:block;text-align:right;margin-top:1px}
+</style>
+</head>
+<body>
+
+<div id="bg">
+  <img src="https://consco.ca/2023/upload/images/img-strip-04.jpg" alt=""
+       onerror="this.src='https://images.unsplash.com/photo-1500595046743-cd271d694d30?w=1920&q=80'">
+</div>
+
+<div id="app">
+
+  <nav id="nav">
+    <a href="#" class="logo">
+      <svg viewBox="0 0 24 24" fill="none">
+        <polygon points="1,2 12,22 9,22 1,2" fill="#7B1010"/>
+        <polygon points="23,2 12,22 15,22 23,2" fill="#9B1515" opacity=".82"/>
+        <rect x="10" y="18" width="4" height="4" fill="#C0392B"/>
+      </svg>
+      <div>
+        <div class="logo-name">VIACOP</div>
+        <div class="logo-sub">Trading &middot; Exportação de Carnes</div>
+      </div>
+    </a>
+    <div class="nav-r">
+      <div class="live-badge"><div class="dot"></div>AO VIVO</div>
+      <a href="tel:+551145868764">+55 11 4586 8764</a>
+      <a href="mailto:contato@viacoptrading.com.br">contato@viacoptrading.com.br</a>
+      <a href="mailto:contato@viacoptrading.com.br?subject=Solicitar%20Cotacao%20VIACOP" class="btn-cta">Solicitar Cotação</a>
+    </div>
+  </nav>
+
+  <div id="worldclock"></div>
+
+  <div id="ticker"><div class="tt" id="tt"></div></div>
+
+  <div id="main">
+    <div id="hero">
+      <div class="hero-eyebrow">Brasil &middot; Est. 2005 &middot; SIF/MAPA</div>
+      <div class="hero-h">
+        Negociação é uma<br>questão de confiança.
+        <em id="tagline">We connect Brazil to the world.</em>
+      </div>
+      <p class="hero-sub">
+        Conectamos produtores brasileiros certificados a compradores internacionais de carne bovina e frango — do frigorífico ao porto de destino.
+      </p>
+      <div class="hero-btns">
+        <a href="mailto:contato@viacoptrading.com.br?subject=Solicitar%20Cotacao%20-%20VIACOP%20TRADING" class="btn-primary">Solicitar Cotação</a>
+        <a href="mailto:contato@viacoptrading.com.br?subject=Contato%20-%20VIACOP%20TRADING" class="btn-ghost">Fale Conosco</a>
+      </div>
+      <div class="product-tags">
+        <span class="ptag">&#x1F969; Bovino</span>
+        <span class="ptag">&#x1F414; Frango</span>
+        <span class="ptag">&#x1F30D; 15+ Países</span>
+        <span class="ptag">&#x1F4CB; SIF / MAPA</span>
+        <span class="ptag">&#x2705; Halal</span>
+      </div>
+    </div>
+
+    <div id="right">
+      <div class="ph">
+        <span class="ph-t">// Notícias do Agro</span>
+        <span class="ph-r" id="newsTime"></span>
+      </div>
+      <div id="news-feed"><div class="loading"><span class="sp"></span>&nbsp; carregando...</div></div>
+      <div id="fx-panel">
+        <div class="ph">
+          <span class="ph-t">// Câmbio Ao Vivo</span>
+          <span class="ph-r" id="fxTime"></span>
+        </div>
+        <div id="fx-list"><div class="loading"><span class="sp"></span></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div id="footer">
+    <div class="ft">
+      <div class="ft-brand">VIACOP TRADING</div>
+      <div class="ft-est">Exportação de Carnes &middot; Est. 2005 &middot; SIF/MAPA</div>
+    </div>
+    <div class="ft">
+      <div class="ft-addr">Sala 1014 &middot; CEP 13201-840 &middot; Jundiaí &middot; SP &middot; Brasil</div>
+    </div>
+    <div class="ft ft-right">
+      <a href="tel:+551145868764">+55 11 4586 8764</a>
+      <a href="mailto:contato@viacoptrading.com.br">contato@viacoptrading.com.br</a>
+      <span id="clock"></span>
+    </div>
+  </div>
+
+</div>
+
+<script>
+(function() {
+  'use strict';
+
+  // WORLD CLOCKS
+  var CITIES = [
+    { name:'Sao Paulo', tz:'America/Sao_Paulo', abb:'BRT'  },
+    { name:'Roma',      tz:'Europe/Rome',        abb:'CET'  },
+    { name:'Cairo',     tz:'Africa/Cairo',       abb:'EET'  },
+    { name:'Qatar',     tz:'Asia/Qatar',         abb:'AST'  },
+    { name:'Beijing',   tz:'Asia/Shanghai',      abb:'CST'  },
+    { name:'Tokyo',     tz:'Asia/Tokyo',         abb:'JST'  },
+    { name:'Sydney',    tz:'Australia/Sydney',   abb:'AEDT' }
+  ];
+
+  function getTime(tz) {
+    return new Date().toLocaleTimeString('en-GB', {
+      timeZone: tz, hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false
+    });
+  }
+
+  var wc = document.getElementById('worldclock');
+  wc.innerHTML = CITIES.map(function(c) {
+    return '<div class="wc-item">' +
+      '<span class="wc-city">' + c.name + '</span>' +
+      '<span class="wc-time" data-tz="' + c.tz + '">' + getTime(c.tz) + '</span>' +
+      '<span class="wc-tz">' + c.abb + '</span>' +
+      '</div>';
+  }).join('');
+
+  setInterval(function() {
+    document.querySelectorAll('.wc-time').forEach(function(el) {
+      el.textContent = getTime(el.getAttribute('data-tz'));
+    });
+  }, 1000);
+
+  // FOOTER CLOCK
+  (function tick() {
+    document.getElementById('clock').textContent = getTime('America/Sao_Paulo') + ' BRT';
+    setTimeout(tick, 1000);
+  })();
+
+  // TAGLINE: fade out after 10s
+  setTimeout(function() {
+    var el = document.getElementById('tagline');
+    if (el) { el.classList.add('gone'); }
+  }, 10000);
+
+  // FX DATA
+  var FX0 = [
+    { p:'USD/BRL',   v:'5,1670', c:'+0,0424', pct:'+0,83%', d:'up' },
+    { p:'EUR/BRL',   v:'6,0780', c:'+0,0252', pct:'+0,42%', d:'up' },
+    { p:'GBP/BRL',   v:'6,9592', c:'+0,0123', pct:'+0,18%', d:'up' },
+    { p:'IBOVESPA',  v:'190.145',c:'-1.103',  pct:'-0,58%', d:'dn' },
+    { p:'BOI GORDO', v:'R$ 350', c:'+1,20',   pct:'+0,34%', d:'up' },
+    { p:'BRENT',     v:'72,08',  c:'+1,39',   pct:'+1,97%', d:'up' },
+    { p:'USD/JPY',   v:'156,25', c:'-0,19',   pct:'-0,12%', d:'dn' }
+  ];
+
+  function buildTicker(d) {
+    var h = d.map(function(r) {
+      return '<span class="ti"><span class="tl">' + r.p + '</span><span class="tv">' + r.v + '</span><span class="tc ' + r.d + '">' + r.pct + '</span></span>';
+    }).join('');
+    document.getElementById('tt').innerHTML = h + h;
+  }
+
+  function buildFX(d) {
+    document.getElementById('fx-list').innerHTML = d.map(function(r) {
+      return '<div class="fx-row"><span class="fx-p">' + r.p + '</span><div class="fx-rhs"><span class="fx-v">' + r.v + '</span><span class="fx-c ' + r.d + '">' + r.c + ' (' + r.pct + ')</span></div></div>';
+    }).join('');
+    document.getElementById('fxTime').textContent = getTime('America/Sao_Paulo').substr(0,5);
+  }
+
+  buildTicker(FX0);
+  buildFX(FX0);
+
+  async function refreshFX() {
+    var K = 'vc_fx9', T = 5 * 60 * 1000;
+    try {
+      var c = JSON.parse(localStorage.getItem(K) || 'null');
+      if (c && Date.now() - c.ts < T) { buildTicker(c.d); buildFX(c.d); return; }
+    } catch(e) {}
+    try {
+      var r = await fetch('https://api.anthropic.com/v1/messages', {
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          model: 'claude-sonnet-4-20250514', max_tokens: 600,
+          system: 'Retorne APENAS JSON sem markdown. Formato: {"rates":[{"p":"PAR","v":"valor","c":"variacao","pct":"pct%","d":"up ou dn"}]}',
+          messages: [{ role: 'user', content: 'Cotacoes atuais: USD/BRL, EUR/BRL, GBP/BRL, Ibovespa, Boi Gordo BRL, Petroleo Brent, USD/JPY. Apenas JSON.' }]
+        })
+      });
+      var j = await r.json();
+      var txt = (j.content && j.content[0] && j.content[0].text) ? j.content[0].text : '';
+      txt = txt.replace(/```json|```/g, '').trim();
+      var data = JSON.parse(txt).rates || [];
+      if (data.length > 0) {
+        try { localStorage.setItem(K, JSON.stringify({ ts: Date.now(), d: data })); } catch(e) {}
+        buildTicker(data); buildFX(data);
+      }
+    } catch(e) {}
+  }
+  refreshFX();
+  setInterval(refreshFX, 5 * 60 * 1000);
+
+  // NEWS
+  var SRC = [
+    {
+      tag: 'Notag. Agricolas', key: 'vc_na9',
+      q: '10 noticias recentes de noticiasagricolas.com.br sobre boi gordo e exportacao bovina.',
+      fb: [
+        { d:'25/02/2026', t:'12:02', h:'Pecuaria 5.0 entra na pauta e RS reage com lavoura de carne', url:'https://www.noticiasagricolas.com.br/noticias/boi/416064.html' },
+        { d:'12/02/2026', t:'07:44', h:'Cota da China preocupa, mas exportacao inicia 2026 em volume recorde', url:'https://www.noticiasagricolas.com.br/noticias/boi/415358.html' },
+        { d:'06/02/2026', t:'19:21', h:'Trump amplia importacoes da Argentina e deixa Brasil em alerta', url:'https://www.noticiasagricolas.com.br/noticias/boi/415130.html' },
+        { d:'29/01/2026', t:'07:26', h:'Negocios e precos encerram janeiro firmes; tendencia de alta segue', url:'https://www.noticiasagricolas.com.br/noticias/boi/414643.html' }
+      ]
+    },
+    {
+      tag: 'Pecuaria.com.br', key: 'vc_pc9',
+      q: '10 noticias recentes de pecuaria.com.br sobre mercado bovino e exportacao.',
+      fb: [
+        { d:'26/02/2026', h:'Arroba do boi gordo chega a R$350 em SP com demanda firme', url:'https://www.pecuaria.com.br/' },
+        { d:'25/02/2026', h:'Exportacoes de carne bovina crescem 18% no acumulado de 2026', url:'https://www.pecuaria.com.br/' },
+        { d:'24/02/2026', h:'China mantem pressao sobre cotas de carne bovina brasileira', url:'https://www.pecuaria.com.br/' }
+      ]
+    },
+    {
+      tag: 'Canal Rural', key: 'vc_cr9',
+      q: '10 noticias recentes de canalrural.com.br sobre pecuaria, boi e exportacoes.',
+      fb: [
+        { d:'26/02/2026', h:'Agronegocio bate recorde de exportacoes no inicio de 2026', url:'https://www.canalrural.com.br/' },
+        { d:'25/02/2026', h:'Frango brasileiro mantem competitividade com cambio favoravel', url:'https://www.canalrural.com.br/' },
+        { d:'22/02/2026', h:'Camara aprova Mercosul-UE com salvaguardas para o agro brasileiro', url:'https://www.canalrural.com.br/' }
+      ]
+    },
+    {
+      tag: 'AgroLink', key: 'vc_al9',
+      q: '10 noticias recentes de agrolink.com.br sobre bovinos, frango e exportacao.',
+      fb: [
+        { d:'26/02/2026', h:'Cotacoes do boi gordo: precos por estado nesta semana', url:'https://www.agrolink.com.br/' },
+        { d:'25/02/2026', h:'Abate de bovinos cresce 8% no Brasil no primeiro bimestre de 2026', url:'https://www.agrolink.com.br/' },
+        { d:'24/02/2026', h:'Mercado de frango congelado aquece com pedidos do Oriente Medio', url:'https://www.agrolink.com.br/' }
+      ]
+    }
+  ];
+
+  var TTL = 2 * 60 * 60 * 1000;
+
+  function renderNews(all) {
+    all.sort(function(a, b) {
+      var ka = (a.d || '01/01/2000').split('/').reverse().join('') + (a.t || '0000');
+      var kb = (b.d || '01/01/2000').split('/').reverse().join('') + (b.t || '0000');
+      return kb.localeCompare(ka);
+    });
+    document.getElementById('news-feed').innerHTML = all.map(function(x) {
+      return '<a class="ni" href="' + (x.url || '#') + '" target="_blank" rel="noopener">' +
+        '<div class="ni-src">' + x.src + '</div>' +
+        '<div class="ni-date">' + (x.d || '') + (x.t ? ' &middot; ' + x.t : '') + '</div>' +
+        '<div class="ni-t">' + x.h + '</div>' +
+        '</a>';
+    }).join('');
+    document.getElementById('newsTime').textContent = getTime('America/Sao_Paulo').substr(0,5);
+  }
+
+  async function loadNews() {
+    var all = [];
+    await Promise.all(SRC.map(async function(s) {
+      try {
+        var c = JSON.parse(localStorage.getItem(s.key) || 'null');
+        if (c && Date.now() - c.ts < TTL) {
+          c.i.forEach(function(x) { all.push(Object.assign({}, x, { src: s.tag })); });
+          return;
+        }
+      } catch(e) {}
+      s.fb.forEach(function(x) { all.push(Object.assign({}, x, { src: s.tag })); });
+      try {
+        var r = await fetch('https://api.anthropic.com/v1/messages', {
+          method: 'POST', headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            model: 'claude-sonnet-4-20250514', max_tokens: 800,
+            system: 'Retorne APENAS JSON sem markdown. Formato: {"items":[{"d":"DD/MM/AAAA","t":"HH:MM","h":"titulo","url":"URL"}]}',
+            messages: [{ role: 'user', content: s.q + ' Apenas JSON.' }]
+          })
+        });
+        if (!r.ok) { return; }
+        var j = await r.json();
+        var txt = (j.content && j.content[0] && j.content[0].text) ? j.content[0].text : '';
+        var fresh = JSON.parse(txt.replace(/```json|```/g, '').trim()).items || [];
+        if (fresh.length > 0) {
+          try { localStorage.setItem(s.key, JSON.stringify({ ts: Date.now(), i: fresh })); } catch(e) {}
+          for (var i = all.length - 1; i >= 0; i--) {
+            if (all[i].src === s.tag) { all.splice(i, 1); }
+          }
+          fresh.forEach(function(x) { all.push(Object.assign({}, x, { src: s.tag })); });
+        }
+      } catch(e) {}
+    }));
+    renderNews(all);
+  }
+
+  loadNews();
+  setInterval(function() {
+    SRC.forEach(function(s) { try { localStorage.removeItem(s.key); } catch(e) {} });
+    loadNews();
+  }, TTL);
+
+})();
+</script>
+</body>
+</html>
