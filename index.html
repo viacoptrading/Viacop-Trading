@@ -16,17 +16,11 @@
 }
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 html,body{width:100%;height:100%;overflow:hidden;background:#050505;color:#f5f5f5;font-family:var(--sans)}
-
-/* APP: nav68 | clocks34 | ticker24 | main1fr | footer52 */
 #app{display:grid;grid-template-rows:68px 34px 24px 1fr 52px;height:100vh;width:100vw;position:relative}
 #app>*{position:relative;z-index:1}
-
-/* BG */
 #bg{position:fixed;inset:0;z-index:0}
-#bg img{width:100%;height:100%;object-fit:cover;object-position:center 35%}
-#bg::after{content:'';position:absolute;inset:0;background:linear-gradient(105deg,rgba(0,0,0,.88) 0%,rgba(0,0,0,.62) 45%,rgba(0,0,0,.72) 100%)}
-
-/* NAV */
+#bg img{width:100%;height:100%;object-fit:cover;object-position:center 40%}
+#bg::after{content:'';position:absolute;inset:0;background:linear-gradient(105deg,rgba(0,0,0,.92) 0%,rgba(0,0,0,.78) 45%,rgba(0,0,0,.85) 100%)}
 #nav{display:flex;align-items:center;justify-content:space-between;padding:0 36px;background:rgba(0,0,0,.28);border-bottom:1px solid var(--bdr);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
 .logo{display:flex;align-items:center;gap:14px;text-decoration:none}
 .logo svg{width:34px;height:34px;flex-shrink:0}
@@ -40,16 +34,12 @@ html,body{width:100%;height:100%;overflow:hidden;background:#050505;color:#f5f5f
 .live-badge{display:flex;align-items:center;gap:5px;font-family:var(--mono);font-size:7px;letter-spacing:2px;color:rgba(255,255,255,.28)}
 .dot{width:5px;height:5px;border-radius:50%;background:var(--red3);animation:blink 2s infinite}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:.1}}
-
-/* WORLD CLOCKS */
-#worldclock{display:flex;align-items:center;padding:0 36px;background:rgba(0,0,0,.75);border-bottom:1px solid var(--bdr);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);overflow:hidden}
-.wc-item{display:flex;align-items:center;gap:9px;padding:0 18px 0 0;margin-right:18px;border-right:1px solid rgba(255,255,255,.07);height:34px;flex-shrink:0}
+#worldclock{display:flex;align-items:center;padding:0 24px;background:rgba(0,0,0,.75);border-bottom:1px solid var(--bdr);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);overflow:hidden;gap:0}
+.wc-item{display:flex;align-items:center;gap:7px;padding:0 12px 0 0;margin-right:12px;border-right:1px solid rgba(255,255,255,.07);height:34px;flex-shrink:0;cursor:pointer;transition:opacity .2s}.wc-item:hover{opacity:.7}
 .wc-item:last-child{border-right:none}
-.wc-city{font-family:var(--mono);font-size:7.5px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.30);min-width:50px}
-.wc-time{font-family:var(--mono);font-size:13px;font-weight:500;color:#fff;letter-spacing:1px;min-width:58px}
+.wc-city{font-family:var(--mono);font-size:6.5px;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.30);min-width:44px}
+.wc-time{font-family:var(--mono);font-size:12px;font-weight:500;color:#fff;letter-spacing:1px;min-width:52px}
 .wc-tz{font-family:var(--mono);font-size:7px;color:var(--red3);letter-spacing:1px;opacity:.7}
-
-/* TICKER */
 #ticker{overflow:hidden;display:flex;align-items:center;background:rgba(0,0,0,.52);border-bottom:1px solid var(--bdr);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px)}
 .tt{display:flex;white-space:nowrap;animation:slide 65s linear infinite}
 .tt:hover{animation-play-state:paused}
@@ -57,11 +47,7 @@ html,body{width:100%;height:100%;overflow:hidden;background:#050505;color:#f5f5f
 .ti{display:inline-flex;align-items:center;gap:7px;padding:0 16px;height:24px;font-family:var(--mono);font-size:9px;border-right:1px solid var(--bdr);flex-shrink:0}
 .tl{color:rgba(255,255,255,.26)}.tv{color:#fff;font-weight:500}.tc{font-size:8px}
 .up{color:var(--grn)}.dn{color:var(--neg)}
-
-/* MAIN */
 #main{display:grid;grid-template-columns:1fr 318px;overflow:hidden}
-
-/* HERO */
 #hero{display:flex;flex-direction:column;justify-content:center;padding:0 68px 0 56px}
 .hero-eyebrow{font-family:var(--mono);font-size:8px;letter-spacing:6px;text-transform:uppercase;color:var(--red3);margin-bottom:22px;opacity:.85;display:flex;align-items:center;gap:14px}
 .hero-eyebrow::before{content:'';width:28px;height:1px;background:var(--red3)}
@@ -77,8 +63,6 @@ html,body{width:100%;height:100%;overflow:hidden;background:#050505;color:#f5f5f
 .product-tags{display:flex;align-items:center;gap:10px;margin-top:34px}
 .ptag{padding:5px 13px;border:1px solid rgba(255,255,255,.1);font-family:var(--mono);font-size:7.5px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.32);transition:all .2s;cursor:default}
 .ptag:hover{border-color:rgba(255,255,255,.28);color:rgba(255,255,255,.65)}
-
-/* RIGHT */
 #right{display:flex;flex-direction:column;overflow:hidden;background:rgba(0,0,0,.65);border-left:1px solid var(--bdr);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
 .ph{display:flex;align-items:center;justify-content:space-between;padding:7px 14px;border-bottom:1px solid var(--bdr);flex-shrink:0}
 .ph-t{font-family:var(--mono);font-size:7px;font-weight:500;letter-spacing:3px;text-transform:uppercase;color:var(--red3);opacity:.9}
@@ -91,9 +75,6 @@ html,body{width:100%;height:100%;overflow:hidden;background:#050505;color:#f5f5f
 .ni-src{font-family:var(--mono);font-size:7px;letter-spacing:2px;text-transform:uppercase;color:var(--red3);margin-bottom:4px;opacity:.75}
 .ni-date{font-family:var(--mono);font-size:8px;color:rgba(255,255,255,.22);margin-bottom:4px}
 .ni-t{font-size:13px;font-weight:400;line-height:1.5;color:rgba(255,255,255,.82);display:-webkit-box;-webkit-line-clamp:5;-webkit-box-orient:vertical;overflow:hidden}
-.loading{padding:20px 14px;text-align:center;font-family:var(--mono);font-size:9px;color:rgba(255,255,255,.18)}
-.sp{display:inline-block;width:8px;height:8px;border:1px solid rgba(255,255,255,.1);border-top-color:var(--red3);border-radius:50%;animation:rot .7s linear infinite}
-@keyframes rot{to{transform:rotate(360deg)}}
 #fx-panel{flex-shrink:0;border-top:1px solid var(--bdr)}
 .fx-row{display:flex;align-items:center;justify-content:space-between;padding:6px 14px;border-bottom:1px solid var(--bdr2);font-family:var(--mono);transition:background .15s}
 .fx-row:last-child{border-bottom:none}
@@ -102,8 +83,6 @@ html,body{width:100%;height:100%;overflow:hidden;background:#050505;color:#f5f5f
 .fx-rhs{display:flex;align-items:center;gap:8px}
 .fx-v{font-size:9px;color:#fff;font-weight:500}
 .fx-c{font-size:8px}
-
-/* FOOTER */
 #footer{display:flex;align-items:center;justify-content:space-between;padding:0 36px;background:var(--red);border-top:2px solid var(--red2);position:relative;overflow:hidden;z-index:2}
 #footer::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(-55deg,transparent,transparent 18px,rgba(0,0,0,.07) 18px,rgba(0,0,0,.07) 36px);pointer-events:none}
 .ft{position:relative;z-index:1}
@@ -114,13 +93,29 @@ html,body{width:100%;height:100%;overflow:hidden;background:#050505;color:#f5f5f
 .ft-right a{display:block;font-family:var(--mono);font-size:9px;color:rgba(255,255,255,.75);text-decoration:none;line-height:1.8;transition:color .2s}
 .ft-right a:hover{color:#fff}
 #clock{font-family:var(--mono);font-size:8px;color:rgba(255,255,255,.3);display:block;text-align:right;margin-top:1px}
+.prod-section{padding:10px 14px 6px;border-bottom:1px solid var(--bdr)}
+.prod-section-title{font-family:var(--mono);font-size:7px;letter-spacing:3px;text-transform:uppercase;color:var(--red3);opacity:.9;margin-bottom:8px}
+.prod-card{display:block;text-decoration:none;padding:10px 14px;border-bottom:1px solid var(--bdr2);transition:background .15s;cursor:default}
+.prod-card:hover{background:rgba(255,255,255,.04)}
+.prod-cat{font-family:var(--mono);font-size:7px;letter-spacing:2px;text-transform:uppercase;color:var(--red3);margin-bottom:3px;opacity:.75}
+.prod-name{font-size:13px;font-weight:600;line-height:1.3;color:rgba(255,255,255,.92);margin-bottom:3px}
+.prod-desc{font-size:11px;font-weight:300;line-height:1.5;color:rgba(255,255,255,.45)}
+.prod-tag{display:inline-block;margin-top:5px;margin-right:4px;padding:2px 7px;border:1px solid rgba(255,255,255,.12);font-family:var(--mono);font-size:7px;letter-spacing:1px;color:rgba(255,255,255,.35);text-transform:uppercase}
+.contact-box{display:flex;align-items:center;justify-content:space-between;margin-top:32px;padding:18px 24px;border:1px solid rgba(255,255,255,.15);background:rgba(0,0,0,.45);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);max-width:490px;position:relative;overflow:hidden}
+.contact-box::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(123,16,16,.18) 0%,transparent 60%);pointer-events:none}
+.contact-box-label{font-family:var(--mono);font-size:7px;letter-spacing:3px;text-transform:uppercase;color:var(--red3);margin-bottom:6px;opacity:.9}
+.contact-box-title{font-family:var(--mono);font-size:15px;font-weight:500;letter-spacing:2px;color:#fff;margin-bottom:4px}
+.contact-box-email{font-family:var(--mono);font-size:11px;font-weight:300;color:rgba(255,255,255,.55);letter-spacing:.5px;text-decoration:none;transition:color .2s}
+.contact-box-email:hover{color:#fff}
+.contact-box-arrow{width:36px;height:36px;border:1px solid rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.5);font-size:16px;flex-shrink:0;text-decoration:none;transition:all .2s}
+.contact-box-arrow:hover{border-color:var(--red3);color:var(--red3);background:rgba(123,16,16,.15)}
 </style>
 </head>
 <body>
 
 <div id="bg">
-  <img src="https://consco.ca/2023/upload/images/img-strip-04.jpg" alt=""
-       onerror="this.src='https://images.unsplash.com/photo-1500595046743-cd271d694d30?w=1920&q=80'">
+  <!-- REPLACE THE src BELOW WITH YOUR BASE64 IMAGE: data:image/png;base64,.... -->
+  <img src="YOUR_BASE64_IMAGE_HERE" alt="">
 </div>
 
 <div id="app">
@@ -134,14 +129,14 @@ html,body{width:100%;height:100%;overflow:hidden;background:#050505;color:#f5f5f
       </svg>
       <div>
         <div class="logo-name">VIACOP</div>
-        <div class="logo-sub">Trading &middot; Exportação de Carnes</div>
+        <div class="logo-sub">Trading · Exportação de Carnes</div>
       </div>
     </a>
     <div class="nav-r">
       <div class="live-badge"><div class="dot"></div>AO VIVO</div>
       <a href="tel:+551145868764">+55 11 4586 8764</a>
       <a href="mailto:contato@viacoptrading.com.br">contato@viacoptrading.com.br</a>
-      <a href="mailto:contato@viacoptrading.com.br?subject=Solicitar%20Cotacao%20VIACOP" class="btn-cta">Solicitar Cotação</a>
+      <a href="mailto:contato@viacoptrading.com.br" class="btn-cta">Solicitar Cotação</a>
     </div>
   </nav>
 
@@ -151,7 +146,7 @@ html,body{width:100%;height:100%;overflow:hidden;background:#050505;color:#f5f5f
 
   <div id="main">
     <div id="hero">
-      <div class="hero-eyebrow">Brasil &middot; Est. 2005 &middot; SIF/MAPA</div>
+      <div class="hero-eyebrow">Brasil · Est. 2005 · SIF/MAPA</div>
       <div class="hero-h">
         Negociação é uma<br>questão de confiança.
         <em id="tagline">We connect Brazil to the world.</em>
@@ -160,30 +155,105 @@ html,body{width:100%;height:100%;overflow:hidden;background:#050505;color:#f5f5f
         Conectamos produtores brasileiros certificados a compradores internacionais de carne bovina e frango — do frigorífico ao porto de destino.
       </p>
       <div class="hero-btns">
-        <a href="mailto:contato@viacoptrading.com.br?subject=Solicitar%20Cotacao%20-%20VIACOP%20TRADING" class="btn-primary">Solicitar Cotação</a>
-        <a href="mailto:contato@viacoptrading.com.br?subject=Contato%20-%20VIACOP%20TRADING" class="btn-ghost">Fale Conosco</a>
+        <a href="mailto:contato@viacoptrading.com.br" class="btn-primary">Solicitar Cotação</a>
+        <a href="mailto:contato@viacoptrading.com.br" class="btn-ghost">Fale Conosco</a>
       </div>
       <div class="product-tags">
-        <span class="ptag">&#x1F969; Bovino</span>
-        <span class="ptag">&#x1F414; Frango</span>
-        <span class="ptag">&#x1F30D; 15+ Países</span>
-        <span class="ptag">&#x1F4CB; SIF / MAPA</span>
-        <span class="ptag">&#x2705; Halal</span>
+        <span class="ptag">🥩 Bovino</span>
+        <span class="ptag">🍗 Frango</span>
+        <span class="ptag">🌍 15+ Países</span>
+        <span class="ptag">📋 SIF / MAPA</span>
+        <span class="ptag">✅ Halal</span>
+      </div>
+      <div class="contact-box">
+        <div>
+          <div class="contact-box-label">// Get in touch</div>
+          <div class="contact-box-title">Contact Us</div>
+          <a href="mailto:contato@viacoptrading.com.br" class="contact-box-email">contato@viacoptrading.com.br</a>
+        </div>
+        <a href="mailto:contato@viacoptrading.com.br" class="contact-box-arrow">→</a>
       </div>
     </div>
 
     <div id="right">
       <div class="ph">
-        <span class="ph-t">// Notícias do Agro</span>
-        <span class="ph-r" id="newsTime"></span>
+        <span class="ph-t">// Produtos VIACOP</span>
+        <span class="ph-r">SIF · MAPA · HALAL</span>
       </div>
-      <div id="news-feed"><div class="loading"><span class="sp"></span>&nbsp; carregando...</div></div>
+      <div id="news-feed">
+
+        <div class="prod-section">
+          <div class="prod-section-title">🥩 Carne Bovina · Beef</div>
+        </div>
+        <div class="prod-card">
+          <div class="prod-cat">Bovino · Premium</div>
+          <div class="prod-name">Boi Gordo — Whole Carcass</div>
+          <div class="prod-desc">Carcaças inteiras de bovino certificado SIF/MAPA. Rastreabilidade completa do frigorífico ao porto de destino.</div>
+          <span class="prod-tag">SIF</span><span class="prod-tag">Halal</span><span class="prod-tag">Frozen</span>
+        </div>
+        <div class="prod-card">
+          <div class="prod-cat">Bovino · Cortes Nobres</div>
+          <div class="prod-name">Noble Cuts — Picanha / Alcatra</div>
+          <div class="prod-desc">Alcatra, Picanha, Contrafilé, Filé Mignon. Embalagem a vácuo Cryovac® em caixas de exportação padronizadas.</div>
+          <span class="prod-tag">Vacuum Packed</span><span class="prod-tag">Export Grade</span>
+        </div>
+        <div class="prod-card">
+          <div class="prod-cat">Bovino · Dianteiro</div>
+          <div class="prod-name">Forequarter</div>
+          <div class="prod-desc">Acém, Paleta, Músculo, Peito. Volumes a granel disponíveis sob contrato.</div>
+          <span class="prod-tag">Bulk</span><span class="prod-tag">MAPA</span><span class="prod-tag">SIF</span>
+        </div>
+        <div class="prod-card">
+          <div class="prod-cat">Bovino · Miúdos</div>
+          <div class="prod-name">Offals / Miúdos Bovinos</div>
+          <div class="prod-desc">Fígado, Coração, Língua, Rins, Mondongo. Alta demanda nos mercados do Oriente Médio e Ásia.</div>
+          <span class="prod-tag">Halal</span><span class="prod-tag">Frozen</span>
+        </div>
+        <div class="prod-card">
+          <div class="prod-cat">Bovino · Processado</div>
+          <div class="prod-name">Ground Beef / Carne Moída</div>
+          <div class="prod-desc">CL 80/20, CL 85/15. Embalagem a vácuo ou IQF. Diferentes porcentagens de gordura disponíveis.</div>
+          <span class="prod-tag">IQF</span><span class="prod-tag">CL 80/20</span>
+        </div>
+
+        <div class="prod-section" style="margin-top:4px">
+          <div class="prod-section-title">🍗 Frango · Chicken</div>
+        </div>
+        <div class="prod-card">
+          <div class="prod-cat">Frango · Inteiro</div>
+          <div class="prod-name">Whole Broiler — Frango Inteiro</div>
+          <div class="prod-desc">Frangos inteiros eviscerados SIF/MAPA. Faixas de peso 900g–2,4kg. Halal certificado.</div>
+          <span class="prod-tag">SIF</span><span class="prod-tag">Halal</span><span class="prod-tag">IQF</span>
+        </div>
+        <div class="prod-card">
+          <div class="prod-cat">Frango · Cortes</div>
+          <div class="prod-name">Boneless Breast — Peito s/ Osso</div>
+          <div class="prod-desc">Peito desossado sem pele (BSSC). Caixas 10kg/15kg. Alta demanda Oriente Médio, Europa e Ásia.</div>
+          <span class="prod-tag">Boneless</span><span class="prod-tag">Export</span><span class="prod-tag">Halal</span>
+        </div>
+        <div class="prod-card">
+          <div class="prod-cat">Frango · Cortes</div>
+          <div class="prod-name">Leg Quarters — Coxa e Sobrecoxa</div>
+          <div class="prod-desc">Com osso e pele. Alta rotatividade nos mercados africano e asiático. Congelado IQF.</div>
+          <span class="prod-tag">Leg Quarter</span><span class="prod-tag">IQF</span>
+        </div>
+        <div class="prod-card">
+          <div class="prod-cat">Frango · Partes</div>
+          <div class="prod-name">Parts — Asas / Pés / Pescoços</div>
+          <div class="prod-desc">Wings, Paws, Necks. Alta procura nos mercados chinês, africano e do Sudeste Asiático.</div>
+          <span class="prod-tag">Paws</span><span class="prod-tag">Wings</span><span class="prod-tag">Bulk</span>
+        </div>
+        <div class="prod-card" style="border-bottom:none;padding:14px">
+          <div class="prod-desc" style="color:rgba(255,255,255,.3);font-size:10px">Cotações FOB / CIF · contato@viacoptrading.com.br</div>
+        </div>
+
+      </div>
       <div id="fx-panel">
         <div class="ph">
           <span class="ph-t">// Câmbio Ao Vivo</span>
           <span class="ph-r" id="fxTime"></span>
         </div>
-        <div id="fx-list"><div class="loading"><span class="sp"></span></div></div>
+        <div id="fx-list"></div>
       </div>
     </div>
   </div>
@@ -191,10 +261,10 @@ html,body{width:100%;height:100%;overflow:hidden;background:#050505;color:#f5f5f
   <div id="footer">
     <div class="ft">
       <div class="ft-brand">VIACOP TRADING</div>
-      <div class="ft-est">Exportação de Carnes &middot; Est. 2005 &middot; SIF/MAPA</div>
+      <div class="ft-est">Exportação de Carnes · Est. 2005 · SIF/MAPA</div>
     </div>
     <div class="ft">
-      <div class="ft-addr">Sala 1014 &middot; CEP 13201-840 &middot; Jundiaí &middot; SP &middot; Brasil</div>
+      <div class="ft-addr">Sala 1014 · CEP 13201-840 · Jundiaí · SP · Brasil</div>
     </div>
     <div class="ft ft-right">
       <a href="tel:+551145868764">+55 11 4586 8764</a>
@@ -209,14 +279,14 @@ html,body{width:100%;height:100%;overflow:hidden;background:#050505;color:#f5f5f
 (function() {
   'use strict';
 
-  // WORLD CLOCKS
+  var API_KEY = 'SUA-CHAVE-AQUI';
+
   var CITIES = [
-    { name:'Sao Paulo', tz:'America/Sao_Paulo', abb:'BRT'  },
-    { name:'Roma',      tz:'Europe/Rome',        abb:'CET'  },
+    { name:'São Paulo', tz:'America/Sao_Paulo', abb:'BRT'  },
+    { name:'Rome',      tz:'Europe/Rome',        abb:'CET'  },
     { name:'Cairo',     tz:'Africa/Cairo',       abb:'EET'  },
-    { name:'Qatar',     tz:'Asia/Qatar',         abb:'AST'  },
+    { name:'Doha',      tz:'Asia/Qatar',         abb:'AST'  },
     { name:'Beijing',   tz:'Asia/Shanghai',      abb:'CST'  },
-    { name:'Tokyo',     tz:'Asia/Tokyo',         abb:'JST'  },
     { name:'Sydney',    tz:'Australia/Sydney',   abb:'AEDT' }
   ];
 
@@ -226,13 +296,24 @@ html,body{width:100%;height:100%;overflow:hidden;background:#050505;color:#f5f5f
     });
   }
 
+  var TD_SLUGS = {
+    'America/Sao_Paulo': 'brazil/sao-paulo',
+    'Europe/Rome':       'italy/rome',
+    'Africa/Cairo':      'egypt/cairo',
+    'Asia/Qatar':        'qatar/doha',
+    'Asia/Shanghai':     'china/beijing',
+    'Australia/Sydney':  'australia/sydney'
+  };
+
   var wc = document.getElementById('worldclock');
   wc.innerHTML = CITIES.map(function(c) {
-    return '<div class="wc-item">' +
+    var slug = TD_SLUGS[c.tz] || '';
+    var url  = slug ? 'https://www.timeanddate.com/worldclock/' + slug : '#';
+    return '<a class="wc-item" href="' + url + '" target="_blank" rel="noopener" style="text-decoration:none">' +
       '<span class="wc-city">' + c.name + '</span>' +
       '<span class="wc-time" data-tz="' + c.tz + '">' + getTime(c.tz) + '</span>' +
       '<span class="wc-tz">' + c.abb + '</span>' +
-      '</div>';
+      '</a>';
   }).join('');
 
   setInterval(function() {
@@ -241,19 +322,16 @@ html,body{width:100%;height:100%;overflow:hidden;background:#050505;color:#f5f5f
     });
   }, 1000);
 
-  // FOOTER CLOCK
   (function tick() {
     document.getElementById('clock').textContent = getTime('America/Sao_Paulo') + ' BRT';
     setTimeout(tick, 1000);
   })();
 
-  // TAGLINE: fade out after 10s
   setTimeout(function() {
     var el = document.getElementById('tagline');
     if (el) { el.classList.add('gone'); }
   }, 10000);
 
-  // FX DATA
   var FX0 = [
     { p:'USD/BRL',   v:'5,1670', c:'+0,0424', pct:'+0,83%', d:'up' },
     { p:'EUR/BRL',   v:'6,0780', c:'+0,0252', pct:'+0,42%', d:'up' },
@@ -288,10 +366,16 @@ html,body{width:100%;height:100%;overflow:hidden;background:#050505;color:#f5f5f
       if (c && Date.now() - c.ts < T) { buildTicker(c.d); buildFX(c.d); return; }
     } catch(e) {}
     try {
-      method: 'POST', headers: { 'Content-Type': 'application/json', 'x-api-key': 'sk-ant-api03-SEU-KEY-AQUI', 'anthropic-version': '2023-06-01', 'anthropic-dangerous-direct-browser-iab': 'true' },
-body: JSON.stringify({
-  model: 'claude-sonnet-4-20250514', max_tokens: 600,
-        
+      var r = await fetch('https://api.anthropic.com/v1/messages', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'x-api-key': API_KEY,
+          'anthropic-version': '2023-06-01',
+          'anthropic-dangerous-direct-browser-iab': 'true'
+        },
+        body: JSON.stringify({
+          model: 'claude-sonnet-4-20250514', max_tokens: 600,
           system: 'Retorne APENAS JSON sem markdown. Formato: {"rates":[{"p":"PAR","v":"valor","c":"variacao","pct":"pct%","d":"up ou dn"}]}',
           messages: [{ role: 'user', content: 'Cotacoes atuais: USD/BRL, EUR/BRL, GBP/BRL, Ibovespa, Boi Gordo BRL, Petroleo Brent, USD/JPY. Apenas JSON.' }]
         })
@@ -308,107 +392,6 @@ body: JSON.stringify({
   }
   refreshFX();
   setInterval(refreshFX, 5 * 60 * 1000);
-
-  // NEWS
-  var SRC = [
-    {
-      tag: 'Notag. Agricolas', key: 'vc_na9',
-      q: '10 noticias recentes de noticiasagricolas.com.br sobre boi gordo e exportacao bovina.',
-      fb: [
-        { d:'25/02/2026', t:'12:02', h:'Pecuaria 5.0 entra na pauta e RS reage com lavoura de carne', url:'https://www.noticiasagricolas.com.br/noticias/boi/416064.html' },
-        { d:'12/02/2026', t:'07:44', h:'Cota da China preocupa, mas exportacao inicia 2026 em volume recorde', url:'https://www.noticiasagricolas.com.br/noticias/boi/415358.html' },
-        { d:'06/02/2026', t:'19:21', h:'Trump amplia importacoes da Argentina e deixa Brasil em alerta', url:'https://www.noticiasagricolas.com.br/noticias/boi/415130.html' },
-        { d:'29/01/2026', t:'07:26', h:'Negocios e precos encerram janeiro firmes; tendencia de alta segue', url:'https://www.noticiasagricolas.com.br/noticias/boi/414643.html' }
-      ]
-    },
-    {
-      tag: 'Pecuaria.com.br', key: 'vc_pc9',
-      q: '10 noticias recentes de pecuaria.com.br sobre mercado bovino e exportacao.',
-      fb: [
-        { d:'26/02/2026', h:'Arroba do boi gordo chega a R$350 em SP com demanda firme', url:'https://www.pecuaria.com.br/' },
-        { d:'25/02/2026', h:'Exportacoes de carne bovina crescem 18% no acumulado de 2026', url:'https://www.pecuaria.com.br/' },
-        { d:'24/02/2026', h:'China mantem pressao sobre cotas de carne bovina brasileira', url:'https://www.pecuaria.com.br/' }
-      ]
-    },
-    {
-      tag: 'Canal Rural', key: 'vc_cr9',
-      q: '10 noticias recentes de canalrural.com.br sobre pecuaria, boi e exportacoes.',
-      fb: [
-        { d:'26/02/2026', h:'Agronegocio bate recorde de exportacoes no inicio de 2026', url:'https://www.canalrural.com.br/' },
-        { d:'25/02/2026', h:'Frango brasileiro mantem competitividade com cambio favoravel', url:'https://www.canalrural.com.br/' },
-        { d:'22/02/2026', h:'Camara aprova Mercosul-UE com salvaguardas para o agro brasileiro', url:'https://www.canalrural.com.br/' }
-      ]
-    },
-    {
-      tag: 'AgroLink', key: 'vc_al9',
-      q: '10 noticias recentes de agrolink.com.br sobre bovinos, frango e exportacao.',
-      fb: [
-        { d:'26/02/2026', h:'Cotacoes do boi gordo: precos por estado nesta semana', url:'https://www.agrolink.com.br/' },
-        { d:'25/02/2026', h:'Abate de bovinos cresce 8% no Brasil no primeiro bimestre de 2026', url:'https://www.agrolink.com.br/' },
-        { d:'24/02/2026', h:'Mercado de frango congelado aquece com pedidos do Oriente Medio', url:'https://www.agrolink.com.br/' }
-      ]
-    }
-  ];
-
-  var TTL = 20 * 60 * 1000;
-
-  function renderNews(all) {
-    all.sort(function(a, b) {
-      var ka = (a.d || '01/01/2000').split('/').reverse().join('') + (a.t || '0000');
-      var kb = (b.d || '01/01/2000').split('/').reverse().join('') + (b.t || '0000');
-      return kb.localeCompare(ka);
-    });
-    document.getElementById('news-feed').innerHTML = all.map(function(x) {
-      return '<a class="ni" href="' + (x.url || '#') + '" target="_blank" rel="noopener">' +
-        '<div class="ni-src">' + x.src + '</div>' +
-        '<div class="ni-date">' + (x.d || '') + (x.t ? ' &middot; ' + x.t : '') + '</div>' +
-        '<div class="ni-t">' + x.h + '</div>' +
-        '</a>';
-    }).join('');
-    document.getElementById('newsTime').textContent = getTime('America/Sao_Paulo').substr(0,5);
-  }
-
-  async function loadNews() {
-    var all = [];
-    await Promise.all(SRC.map(async function(s) {
-      try {
-        var c = JSON.parse(localStorage.getItem(s.key) || 'null');
-        if (c && Date.now() - c.ts < TTL) {
-          c.i.forEach(function(x) { all.push(Object.assign({}, x, { src: s.tag })); });
-          return;
-        }
-      } catch(e) {}
-      s.fb.forEach(function(x) { all.push(Object.assign({}, x, { src: s.tag })); });
-      try {
-        method: 'POST', headers: { 'Content-Type': 'application/json', 'x-api-key': 'sk-ant-api03-SEU-KEY-AQUI', 'anthropic-version': '2023-06-01', 'anthropic-dangerous-direct-browser-iab': 'true' },
-body: JSON.stringify({
-  model: 'claude-sonnet-4-20250514', max_tokens: 800,
-  tools: [{ type: 'web_search_20250305', name: 'web_search' }],
-            system: 'Retorne APENAS JSON sem markdown. Formato: {"items":[{"d":"DD/MM/AAAA","t":"HH:MM","h":"titulo","url":"URL"}]}',
-            messages: [{ role: 'user', content: s.q + ' Apenas JSON.' }]
-          })
-        });
-        if (!r.ok) { return; }
-        var j = await r.json();
-        var txt = (j.content && j.content[0] && j.content[0].text) ? j.content[0].text : '';
-        var fresh = JSON.parse(txt.replace(/```json|```/g, '').trim()).items || [];
-        if (fresh.length > 0) {
-          try { localStorage.setItem(s.key, JSON.stringify({ ts: Date.now(), i: fresh })); } catch(e) {}
-          for (var i = all.length - 1; i >= 0; i--) {
-            if (all[i].src === s.tag) { all.splice(i, 1); }
-          }
-          fresh.forEach(function(x) { all.push(Object.assign({}, x, { src: s.tag })); });
-        }
-      } catch(e) {}
-    }));
-    renderNews(all);
-  }
-
-  loadNews();
-  setInterval(function() {
-    SRC.forEach(function(s) { try { localStorage.removeItem(s.key); } catch(e) {} });
-    loadNews();
-  }, TTL);
 
 })();
 </script>
